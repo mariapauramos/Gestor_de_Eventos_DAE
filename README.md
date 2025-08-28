@@ -7,6 +7,7 @@ Su propósito es la gestión de eventos mediante una aplicación de escritorio e
 
 ## Estructura del Proyecto
 
+```plaintext
 src/
 └── com/
 └── businessdevelop/
@@ -30,7 +31,5 @@ src/
 
 
 ---
-
-## 📝 Notas
  Este repositorio es académico y se centra en aplicar principios **SOLID**. 
 
