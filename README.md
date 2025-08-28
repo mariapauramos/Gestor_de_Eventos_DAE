@@ -1,7 +1,6 @@
 ## Proyecto Gestor de Eventos  
 
-Este proyecto está organizado bajo la arquitectura **Modelo - Vista - Controlador (MVC)**.  
-Su propósito es la gestión de eventos mediante una aplicación de escritorio en **Java (Swing + NetBeans)**.
+Este proyecto está organizado bajo la arquitectura **Modelo - Vista - Controlador (MVC)**.
 
 ---
 
@@ -13,8 +12,8 @@ src/
 └── businessdevelop/
 └── pocguieventos/
 ├── model/ # Clases de negocio (Clases)
-├── view/ #  Interfaces gráficas (Métodos CRUD)
-└── controller/ # Lógica de control (servicios, interfaces)
+├── view/ #  Interfaces gráficas (Método CRUD)
+└── controller/ # Lógica de control (servicio)
 ```
 
 ---
