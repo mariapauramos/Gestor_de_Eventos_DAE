@@ -31,5 +31,7 @@ src/
 
 
 ---
- Este repositorio es académico y se centra en aplicar principios **SOLID**. 
+##Criterio
+
+Este repositorio es académico y se centra en aplicar principios **SOLID** .
 
