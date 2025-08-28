@@ -1,22 +1,36 @@
-# Proyecto Gestor de Eventos
+## Proyecto Gestor de Eventos  
 
-Este proyecto está organizado con la arquitectura **Modelo-Vista-Controlador (MVC)**.
+Este proyecto está organizado bajo la arquitectura **Modelo - Vista - Controlador (MVC)**.  
+Su propósito es la gestión de eventos mediante una aplicación de escritorio en **Java (Swing + NetBeans)**.
 
-## Estructura 
+---
+
+## Estructura del Proyecto
 
 src/
- └─ com/
-     └─ businessdevelop/
-         └─ pocguieventos/
-             ├─ model/
-             ├─ view/
-             └─ controller/
-README.md
+└── com/
+└── businessdevelop/
+└── pocguieventos/
+├── model/ # Clases de negocio (Clases)
+├── view/ #  Interfaces gráficas (Métodos CRUD)
+└── controller/ # Lógica de control (servicios, interfaces)
+
+
+---
 
 ## Autores
-Gileny Silva Leal, 2220221010
-Jonathan David Moya Patarroyo, 2220222039
-Mauricio Arturo Cañas Medina, 2220211010
-Maria Paula Ramos Carrillo, 2220211032
 
+| Nombre                          | Código        |
+|---------------------------------|---------------|
+| Gileny Silva Leal               | 2220221010    |
+| Jonathan David Moya P.          | 2220222039    |
+| Mauricio Arturo Cañas M.        | 2220211010    |
+| María Paula Ramos Carrillo      | 2220211032    |
+
+
+
+---
+
+## 📝 Notas
+ Este repositorio es académico y se centra en aplicar principios **SOLID**. 
 
