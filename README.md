@@ -15,7 +15,7 @@ src/
 ├── model/ # Clases de negocio (Clases)
 ├── view/ #  Interfaces gráficas (Métodos CRUD)
 └── controller/ # Lógica de control (servicios, interfaces)
-
+```
 
 ---
 
@@ -31,7 +31,7 @@ src/
 
 
 ---
-##Criterio
+## Criterio
 
 Este repositorio es académico y se centra en aplicar principios **SOLID** .
 
