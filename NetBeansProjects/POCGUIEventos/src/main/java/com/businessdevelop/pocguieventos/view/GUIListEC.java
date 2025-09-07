@@ -43,6 +43,8 @@ public class GUIListEC extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButtonSalir.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(0, 0, 255));
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,7 @@ public class GUIListEC extends javax.swing.JFrame {
             }
         });
 
+        jTableEventos.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         jTableEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -71,6 +74,8 @@ public class GUIListEC extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableEventos);
 
+        jButtonListar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonListar.setForeground(new java.awt.Color(0, 0, 255));
         jButtonListar.setText("Listar");
         jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

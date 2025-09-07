@@ -7,28 +7,26 @@ package com.businessdevelop.pocguieventos.view;
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.model.Evento;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-//Soloparacomit
+
 /**
  *
  * @author mariaramos
  */
-public class GUICreateED extends javax.swing.JFrame {
+public class GUISearchED extends javax.swing.JFrame {
     
     private IServicioEvento servicioEvento;
+    private Evento ultimoIDBuscado; 
 
     /**
-     * Creates new form GUICreateED
+     * Creates new form GUISearchED
      */
-    public GUICreateED(IServicioEvento servicioEvento) {
+    public GUISearchED(IServicioEvento servicioEvento) {
         this.servicioEvento = servicioEvento;
         initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear Evento Deportivo");
+        setTitle("Buscar Evento Deportivo");
         setLocationRelativeTo(null);
-        pack();
-
     }
 
     /**
@@ -40,33 +38,43 @@ public class GUICreateED extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
         txtAsistentes = new javax.swing.JTextField();
+        txtIdEvento = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        txtLugar = new javax.swing.JTextField();
         txtValorEvento = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelTipoD = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButtonGuardar = new javax.swing.JButton();
+        jLabelCampeonato = new javax.swing.JLabel();
+        jButtonBuscar = new javax.swing.JButton();
+        txtTipoD = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtCampeonato = new javax.swing.JTextField();
         jButtonCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtIdEvento = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtLugar = new javax.swing.JTextField();
-        jLabelTipoD = new javax.swing.JLabel();
-        jLabelCampeonato = new javax.swing.JLabel();
-        txtTipoD = new javax.swing.JTextField();
-        txtCampeonato = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel6.setText("Valor Entrada:");
 
         txtAsistentes.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAsistentesActionPerformed(evt);
+            }
+        });
+
+        txtIdEvento.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdEventoActionPerformed(evt);
             }
         });
 
@@ -77,8 +85,25 @@ public class GUICreateED extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
+        jLabel7.setText("Buscar Evento Deportivo");
+
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel1.setText("ID Evento:");
+
+        txtLugar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLugarActionPerformed(evt);
+            }
+        });
 
         txtValorEvento.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtValorEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -87,20 +112,32 @@ public class GUICreateED extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deportivo.png"))); // NOI18N
+
+        jLabelTipoD.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelTipoD.setText("Tipo Deporte:");
+
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel2.setText("Nombre:");
 
-        jButtonGuardar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButtonGuardar.setForeground(new java.awt.Color(0, 0, 255));
-        jButtonGuardar.setText("Guardar");
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jLabelCampeonato.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelCampeonato.setText("Campeonato:");
+
+        jButtonBuscar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButtonBuscar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
+                jButtonBuscarActionPerformed(evt);
             }
         });
 
+        txtTipoD.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel3.setText("Cuidad:");
+
+        txtCampeonato.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jButtonCerrar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButtonCerrar.setForeground(new java.awt.Color(0, 0, 255));
@@ -116,45 +153,6 @@ public class GUICreateED extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel5.setText("Fecha:");
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel6.setText("Valor Entrada:");
-
-        txtIdEvento.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdEventoActionPerformed(evt);
-            }
-        });
-
-        txtNombre.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
-        txtLugar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarActionPerformed(evt);
-            }
-        });
-
-        jLabelTipoD.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelTipoD.setText("Tipo Deporte:");
-
-        jLabelCampeonato.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelCampeonato.setText("Campeonato:");
-
-        txtTipoD.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-
-        txtCampeonato.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
-        jLabel7.setText("Crear Evento Deportivo");
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deportivo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,14 +185,13 @@ public class GUICreateED extends javax.swing.JFrame {
                             .addComponent(txtCampeonato, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrar)
-                        .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jLabel7)
-                        .addGap(72, 72, 72))))
+                        .addGap(72, 75, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButtonBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCerrar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +208,11 @@ public class GUICreateED extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBuscar)
+                    .addComponent(jButtonCerrar))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,11 +240,7 @@ public class GUICreateED extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCampeonato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCampeonato))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonGuardar)
-                    .addComponent(jButtonCerrar))
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         pack();
@@ -253,61 +250,13 @@ public class GUICreateED extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAsistentesActionPerformed
 
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
-
-    private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorEventoActionPerformed
-
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        try {
-            String idEvento;
-            String nombre;
-            String lugar;
-            int asistentes;
-            LocalDate fecha;
-            double valorEntrada;
-            String tipoDeporte;
-            String campeonato;
-
-            //Evento event = null;
-            idEvento = txtIdEvento.getText().trim();
-            nombre= txtNombre.getText();
-            lugar = txtLugar.getText();
-            asistentes = Integer.parseInt(txtAsistentes.getText());
-            fecha =LocalDate.parse(txtFecha.getText());
-            valorEntrada = Double.parseDouble(txtValorEvento.getText());
-            tipoDeporte =txtTipoD.getText();
-            campeonato = txtCampeonato.getText();
-            
-            EventoDeportivo event = new EventoDeportivo(
-                idEvento, nombre, lugar, asistentes, fecha, valorEntrada,  tipoDeporte, campeonato);
-            
-            servicioEvento.createEvento(event);
-            JOptionPane.showMessageDialog(this, "Evento deportivo creado correctamente.");
-            
-            txtIdEvento.setText("");
-            txtNombre.setText("");
-            txtLugar.setText("");
-            txtAsistentes.setText("");
-            txtFecha.setText("");
-            txtValorEvento.setText("");
-            txtTipoD.setText("");
-            txtCampeonato.setText("");
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
-        }
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
-
-    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButtonCerrarActionPerformed
-
     private void txtIdEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdEventoActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -316,6 +265,45 @@ public class GUICreateED extends javax.swing.JFrame {
     private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLugarActionPerformed
+
+    private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorEventoActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String idEvento = txtIdEvento.getText().trim();
+        if (idEvento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID de evento.");
+            return;
+        }
+
+        Evento event = servicioEvento.searchEvento(idEvento);
+
+        if (event != null && event instanceof EventoDeportivo) {
+            EventoDeportivo ec = (EventoDeportivo) event;
+
+            // Llenamos los campos
+            txtNombre.setText(ec.getNombre());
+            txtLugar.setText(ec.getCiudad());
+            txtAsistentes.setText(String.valueOf(ec.getAsistentes()));
+            txtValorEvento.setText(String.valueOf(ec.getValorEntrada()));
+
+            // Formatear fecha
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            txtFecha.setText(ec.getFecha().format(formato));
+
+            // Campos específicos de cultural
+            txtTipoD.setText(ec.getTipoDeporte());
+            txtCampeonato.setText(ec.getCampeonato());
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Evento deportivo no existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,13 +322,13 @@ public class GUICreateED extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICreateED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICreateED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICreateED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICreateED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -348,8 +336,8 @@ public class GUICreateED extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCerrar;
-    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

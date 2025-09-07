@@ -38,6 +38,11 @@ public class EventoCultural extends Evento implements IEsFolclorico {
         this.artistaPrincipal = artistaPrincipal;
     }
     
+    //Método para calcular el valor del evento para cualquier persona (valor entrada + IVA (19%))
+   @Override
+    public double calcularValor() {
+        return getValorEntrada() * 1.19;
+    }
     
     @Override
     public String toString() {

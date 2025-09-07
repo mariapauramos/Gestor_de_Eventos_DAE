@@ -8,8 +8,10 @@ import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.controller.ServicioEvento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
+import java.awt.Font;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -26,8 +28,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
     public GUIPrincipal() {
         initComponents();
         setTitle("Sistema Gestion de Eventos");
-        setLocationRelativeTo(null);
-        
+        setLocationRelativeTo(null); 
+
         // Opcional: Crear eventos de prueba
         servicioEvento.createEvento(new EventoDeportivo("E001","Futbol","Bogota",50,LocalDate.parse("2026-11-28"),100000, "Futbol", "Liga Colombia"));
         servicioEvento.createEvento(new EventoCultural("C001","Concierto","Ibague",30,LocalDate.parse("2025-10-10"), 80000, "Musical", "Andres Cepeda"));
@@ -49,6 +51,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMenuItemExit = new javax.swing.JMenuItem();
@@ -59,8 +62,12 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuListED = new javax.swing.JMenuItem();
         jMenuListEC = new javax.swing.JMenuItem();
-        jMenuItemSearchEvento = new javax.swing.JMenuItem();
-        jMenuItemDeleteEvento = new javax.swing.JMenuItem();
+        jMenuBuscarEvento = new javax.swing.JMenu();
+        jMenuItemSearchED = new javax.swing.JMenuItem();
+        jMenuItemSearchEC = new javax.swing.JMenuItem();
+        jMenuDelete = new javax.swing.JMenu();
+        jMenuItemDeleteED = new javax.swing.JMenuItem();
+        jMenuItemDeleteEC = new javax.swing.JMenuItem();
         jMenuItemCalcularE = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMenuItemAcercaDe = new javax.swing.JMenuItem();
@@ -81,8 +88,12 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenuArchivo.setText("Archivo");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Portfolio-2.png"))); // NOI18N
 
+        jMenuArchivo.setText("Archivo");
+        jMenuArchivo.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
+
+        jMenuItemExit.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuItemExit.setText("Exit");
         jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,9 +105,12 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuArchivo);
 
         jMenuEvento.setText("Evento");
+        jMenuEvento.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
 
         jMenuCreate.setText("Crear");
+        jMenuCreate.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
 
+        jMenuCreateED.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuCreateED.setText("Evento Deportivo");
         jMenuCreateED.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +119,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         jMenuCreate.add(jMenuCreateED);
 
+        jMenuCreateEC.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuCreateEC.setText("Evento Cultural");
         jMenuCreateEC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +131,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuEvento.add(jMenuCreate);
 
         jMenu5.setText("Listar");
+        jMenu5.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
 
+        jMenuListED.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuListED.setText("Evento Deportivo");
         jMenuListED.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +142,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuListED);
 
+        jMenuListEC.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuListEC.setText("Evento Cultural");
         jMenuListEC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,22 +153,53 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuEvento.add(jMenu5);
 
-        jMenuItemSearchEvento.setText("Buscar");
-        jMenuItemSearchEvento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBuscarEvento.setText("Buscar");
+        jMenuBuscarEvento.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jMenuItemSearchED.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemSearchED.setText("Evento Deportivo");
+        jMenuItemSearchED.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSearchEventoActionPerformed(evt);
+                jMenuItemSearchEDActionPerformed(evt);
             }
         });
-        jMenuEvento.add(jMenuItemSearchEvento);
+        jMenuBuscarEvento.add(jMenuItemSearchED);
 
-        jMenuItemDeleteEvento.setText("Eliminar");
-        jMenuItemDeleteEvento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSearchEC.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemSearchEC.setText("Evento Cultural");
+        jMenuItemSearchEC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemDeleteEventoActionPerformed(evt);
+                jMenuItemSearchECActionPerformed(evt);
             }
         });
-        jMenuEvento.add(jMenuItemDeleteEvento);
+        jMenuBuscarEvento.add(jMenuItemSearchEC);
 
+        jMenuEvento.add(jMenuBuscarEvento);
+
+        jMenuDelete.setText("Eliminar");
+        jMenuDelete.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jMenuItemDeleteED.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemDeleteED.setText("Evento Deportivo");
+        jMenuItemDeleteED.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteEDActionPerformed(evt);
+            }
+        });
+        jMenuDelete.add(jMenuItemDeleteED);
+
+        jMenuItemDeleteEC.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemDeleteEC.setText("Evento Cultural");
+        jMenuItemDeleteEC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteECActionPerformed(evt);
+            }
+        });
+        jMenuDelete.add(jMenuItemDeleteEC);
+
+        jMenuEvento.add(jMenuDelete);
+
+        jMenuItemCalcularE.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuItemCalcularE.setText("Calcular ");
         jMenuItemCalcularE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +211,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuEvento);
 
         jMenuAyuda.setText("Ayuda");
+        jMenuAyuda.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
 
+        jMenuItemAcercaDe.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
         jMenuItemAcercaDe.setText("Acerca de...");
         jMenuItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,53 +230,45 @@ public class GUIPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
-            JOptionPane.showMessageDialog(
-            this,
+            JTextArea texto = new JTextArea(
             "Desarrollado por:\n\n"
-            + " - Gileny Silva Leal, 2220221010\n"
-            + " - Jonathan David Moya Patarroyo, 2220222039\n"
-            + " - Mauricio Arturo Cañas Medina, 2220211010\n"
-            + " - Maria Paula Ramos Carrillo, 2220211032\n",
+          + " - Gileny Silva Leal, 2220221010\n"
+          + " - Jonathan David Moya Patarroyo, 2220222039\n"
+          + " - Mauricio Arturo Cañas Medina, 2220211010\n"
+          + " - Maria Paula Ramos Carrillo, 2220211032\n"
+        );
+
+        // Configurar estilo
+        texto.setFont(new Font("Verdana", Font.PLAIN, 13));
+        texto.setEditable(false);
+        texto.setOpaque(false);
+
+        JOptionPane.showMessageDialog(
+            this,
+            texto,
             "Acerca de",
             JOptionPane.INFORMATION_MESSAGE
         );
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
-    private GUISearchEvento guiSearchEvento;
-    private void jMenuItemSearchEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSearchEventoActionPerformed
-        if (guiSearchEvento == null) {
-            guiSearchEvento = new GUISearchEvento(servicioEvento);
-            }
-         guiSearchEvento.setVisible(true);
-       
-    }//GEN-LAST:event_jMenuItemSearchEventoActionPerformed
-
-    private GUIDeleteEvento guiDeleteEvento;
     
-    private void jMenuItemDeleteEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteEventoActionPerformed
-        if (guiDeleteEvento == null) {
-        guiDeleteEvento = new GUIDeleteEvento(servicioEvento);
-        }
-
-        // Intentamos pasar el último buscado si existe
-        if (guiSearchEvento != null) {
-            guiDeleteEvento.setUltimoIDBuscado(guiSearchEvento.getUltimoIDBuscado());
-        }
-
-        guiDeleteEvento.setVisible(true);
-    }//GEN-LAST:event_jMenuItemDeleteEventoActionPerformed
-
     private void jMenuItemCalcularEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularEActionPerformed
         GUICalcularEvento gui = new GUICalcularEvento(servicioEvento);
         gui.setVisible(true);
@@ -259,6 +302,26 @@ public class GUIPrincipal extends javax.swing.JFrame {
         GUIListEC gui = new GUIListEC(servicioEvento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuListECActionPerformed
+
+    private void jMenuItemSearchEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSearchEDActionPerformed
+        GUISearchED gui = new GUISearchED(servicioEvento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSearchEDActionPerformed
+
+    private void jMenuItemSearchECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSearchECActionPerformed
+        GUISearchEC gui = new GUISearchEC(servicioEvento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSearchECActionPerformed
+
+    private void jMenuItemDeleteEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteEDActionPerformed
+        GUIDeleteED gui = new GUIDeleteED(servicioEvento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemDeleteEDActionPerformed
+
+    private void jMenuItemDeleteECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteECActionPerformed
+        GUIDeleteEC gui = new GUIDeleteEC(servicioEvento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemDeleteECActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,6 +359,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -306,16 +370,20 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenu jMenuBuscarEvento;
     private javax.swing.JMenu jMenuCreate;
     private javax.swing.JMenuItem jMenuCreateEC;
     private javax.swing.JMenuItem jMenuCreateED;
+    private javax.swing.JMenu jMenuDelete;
     private javax.swing.JMenu jMenuEvento;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAcercaDe;
     private javax.swing.JMenuItem jMenuItemCalcularE;
-    private javax.swing.JMenuItem jMenuItemDeleteEvento;
+    private javax.swing.JMenuItem jMenuItemDeleteEC;
+    private javax.swing.JMenuItem jMenuItemDeleteED;
     private javax.swing.JMenuItem jMenuItemExit;
-    private javax.swing.JMenuItem jMenuItemSearchEvento;
+    private javax.swing.JMenuItem jMenuItemSearchEC;
+    private javax.swing.JMenuItem jMenuItemSearchED;
     private javax.swing.JMenuItem jMenuListEC;
     private javax.swing.JMenuItem jMenuListED;
     // End of variables declaration//GEN-END:variables

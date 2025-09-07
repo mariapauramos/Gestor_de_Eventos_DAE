@@ -47,6 +47,12 @@ public class EventoDeportivo extends Evento{
     public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
+    
+    //Método para calcular el valor del evento para cualquier persona (valor entrada + IVA (19%))
+    @Override
+    public double calcularValor() {
+        return getValorEntrada() * 1.19;
+    }
    
 
     

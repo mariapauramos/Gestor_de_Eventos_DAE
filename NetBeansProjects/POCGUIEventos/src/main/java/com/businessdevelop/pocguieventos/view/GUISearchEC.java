@@ -7,23 +7,23 @@ package com.businessdevelop.pocguieventos.view;
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.model.Evento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author mariaramos
  */
-public class GUICreateEC extends javax.swing.JFrame {
+public class GUISearchEC extends javax.swing.JFrame {
 
     private IServicioEvento servicioEvento;
     /**
-     * Creates new form GUICreateEC
+     * Creates new form GUISearchEC
      */
-    public GUICreateEC(IServicioEvento servicioEvento) {
+    public GUISearchEC(IServicioEvento servicioEvento) {
         this.servicioEvento = servicioEvento;
         initComponents();
-        setTitle("Crear Evento Cultural");
+        setTitle("Buscar Evento Cultural");
         setLocationRelativeTo(null);
     }
 
@@ -36,55 +36,28 @@ public class GUICreateEC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        txtLugar = new javax.swing.JTextField();
-        jButtonGuardar = new javax.swing.JButton();
-        jLabelTipoC = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabelArtistaP = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
         txtTipoC = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabelIcon = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtArtistaP = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         txtAsistentes = new javax.swing.JTextField();
+        txtLugar = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
+        jButtonBuscar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabelTipoC = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txtIdEvento = new javax.swing.JTextField();
+        jLabelArtistaP = new javax.swing.JLabel();
         txtValorEvento = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabelIcon = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel2.setText("Nombre:");
-
-        txtLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarActionPerformed(evt);
-            }
-        });
-
-        jButtonGuardar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButtonGuardar.setForeground(new java.awt.Color(0, 0, 255));
-        jButtonGuardar.setText("Guardar");
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
-            }
-        });
-
-        jLabelTipoC.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelTipoC.setText("Tipo Cultura:");
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel3.setText("Ciudad:");
-
-        jLabelArtistaP.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelArtistaP.setText("Artista Principal:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButtonCerrar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButtonCerrar.setForeground(new java.awt.Color(0, 0, 255));
@@ -95,52 +68,89 @@ public class GUICreateEC extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel4.setText("Asistentes:");
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel5.setText("Fecha:");
-
-        txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAsistentesActionPerformed(evt);
-            }
-        });
-
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel6.setText("Valor Entrada:");
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel1.setText("ID Evento:");
-
-        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdEventoActionPerformed(evt);
-            }
-        });
-
-        txtValorEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorEventoActionPerformed(evt);
-            }
-        });
-
+        txtNombre.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
 
+        txtTipoC.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
         jLabel7.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
-        jLabel7.setText("Crear Evento Cultural");
+        jLabel7.setText("Buscar Evento Cultural");
 
         jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cultural.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel4.setText("Asistentes:");
+
+        txtArtistaP.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel5.setText("Fecha:");
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel2.setText("Nombre:");
+
+        txtAsistentes.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAsistentesActionPerformed(evt);
+            }
+        });
+
+        txtLugar.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLugarActionPerformed(evt);
+            }
+        });
+
+        txtFecha.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+
+        jButtonBuscar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButtonBuscar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel6.setText("Valor Entrada:");
+
+        jLabelTipoC.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelTipoC.setText("Tipo Cultura:");
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel1.setText("ID Evento:");
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel3.setText("Ciudad:");
+
+        txtIdEvento.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdEventoActionPerformed(evt);
+            }
+        });
+
+        jLabelArtistaP.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelArtistaP.setText("Artista Principal:");
+
+        txtValorEvento.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtValorEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorEventoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,57 +159,64 @@ public class GUICreateEC extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabelArtistaP)
-                            .addComponent(jLabelTipoC)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre)
-                            .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha)
-                            .addComponent(txtValorEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTipoC)
-                            .addComponent(txtArtistaP))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButtonGuardar)
+                        .addComponent(jButtonBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCerrar))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabelArtistaP)
+                                    .addComponent(jLabelTipoC)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFecha)
+                                    .addComponent(txtValorEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTipoC)
+                                    .addComponent(txtArtistaP)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabelIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 67, Short.MAX_VALUE)))
+                                .addComponent(jLabel2)
+                                .addGap(0, 330, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
+                        .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBuscar)
+                    .addComponent(jButtonCerrar))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -227,72 +244,63 @@ public class GUICreateEC extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelArtistaP)
                     .addComponent(txtArtistaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonGuardar)
-                    .addComponent(jButtonCerrar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarActionPerformed
-
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        try {
-            String idEvento;
-            String nombre;
-            String lugar;
-            int asistentes;
-            LocalDate fecha;
-            double valorEntrada;
-            String tipoCultura;
-            String artistaPrincipal;
-
-            //Evento event = null;
-            idEvento = txtIdEvento.getText().trim();
-            nombre= txtNombre.getText();
-            lugar = txtLugar.getText();
-            asistentes = Integer.parseInt(txtAsistentes.getText());
-            fecha =LocalDate.parse(txtFecha.getText());
-            valorEntrada = Double.parseDouble(txtValorEvento.getText());
-            tipoCultura =txtTipoC.getText();
-            artistaPrincipal = txtArtistaP.getText();
-
-            EventoCultural event = new EventoCultural(
-                idEvento, nombre, lugar, asistentes, fecha, valorEntrada,  tipoCultura, artistaPrincipal);
-
-            servicioEvento.createEvento(event);
-            JOptionPane.showMessageDialog(this, "Evento cultural creado correctamente.");
-            
-            txtIdEvento.setText("");
-            txtNombre.setText("");
-            txtLugar.setText("");
-            txtAsistentes.setText("");
-            txtFecha.setText("");
-            txtValorEvento.setText("");
-            txtTipoC.setText("");
-            txtArtistaP.setText("");
-            
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
-        }
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
-
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsistentesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAsistentesActionPerformed
 
+    private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLugarActionPerformed
+
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+
+        String idEvento = txtIdEvento.getText().trim();
+        if (idEvento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID de evento.");
+            return;
+        }
+
+        Evento event = servicioEvento.searchEvento(idEvento);
+
+        if (event != null && event instanceof EventoCultural) {
+            EventoCultural ec = (EventoCultural) event;
+
+            // Llenamos los campos
+            txtNombre.setText(ec.getNombre());
+            txtLugar.setText(ec.getCiudad());
+            txtAsistentes.setText(String.valueOf(ec.getAsistentes()));
+            txtValorEvento.setText(String.valueOf(ec.getValorEntrada()));
+
+            // Formatear fecha
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            txtFecha.setText(ec.getFecha().format(formato));
+
+            // Campos específicos de cultural
+            txtTipoC.setText(ec.getTipoCultura());
+            txtArtistaP.setText(ec.getArtistaPrincipal());
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Evento cultural no existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void txtIdEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventoActionPerformed
         // TODO add your handling code here:
@@ -301,10 +309,6 @@ public class GUICreateEC extends javax.swing.JFrame {
     private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorEventoActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,22 +327,23 @@ public class GUICreateEC extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICreateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICreateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICreateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICreateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISearchEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCerrar;
-    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

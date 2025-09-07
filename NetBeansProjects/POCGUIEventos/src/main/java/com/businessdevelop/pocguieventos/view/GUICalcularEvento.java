@@ -6,6 +6,8 @@ package com.businessdevelop.pocguieventos.view;
 
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.model.Evento;
+import com.businessdevelop.pocguieventos.model.EventoCultural;
+import com.businessdevelop.pocguieventos.model.EventoDeportivo;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,11 +40,22 @@ public class GUICalcularEvento extends javax.swing.JFrame {
         txtIdEvento = new javax.swing.JTextField();
         jButtonCalcular = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtTotalE = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtTipoE = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabelIdEvento.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jLabelIdEvento.setText("ID Evento:");
 
+        txtIdEvento.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jButtonCalcular.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonCalcular.setForeground(new java.awt.Color(0, 0, 255));
         jButtonCalcular.setText("Calcular");
         jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +63,8 @@ public class GUICalcularEvento extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalir.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(0, 0, 255));
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,43 +72,80 @@ public class GUICalcularEvento extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
+        jLabel1.setText("Calcular Evento");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calcular.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jLabel3.setText("Total del evento:");
+
+        txtTotalE.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jLabel4.setText("Tipo evento:");
+
+        txtTipoE.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCalcular)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSalir)
-                        .addGap(40, 40, 40))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addComponent(jButtonCalcular)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelIdEvento)
-                        .addGap(44, 44, 44)
-                        .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(102, Short.MAX_VALUE))))
+                        .addGap(121, 121, 121)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonSalir)
+                            .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelIdEvento)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTotalE)
+                            .addComponent(txtTipoE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelIdEvento)
                     .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCalcular)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCalcular)
-                    .addComponent(jButtonSalir))
-                .addContainerGap(115, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(txtTotalE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTipoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalir)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
-        String idEvento = txtIdEvento.getText().trim();
+         String idEvento = txtIdEvento.getText().trim();
 
         if (idEvento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese el ID del evento.");
@@ -111,11 +163,17 @@ public class GUICalcularEvento extends javax.swing.JFrame {
         // Calcular el valor total usando el método del servicio
         double valor = servicioEvento.calcularValorTotalEvento(idEvento);
 
-        JOptionPane.showMessageDialog(this,
-                "El valor total del evento es: $" + valor,
-                "Resultado",
-                JOptionPane.INFORMATION_MESSAGE);
-        
+        // Mostrar el resultado en el campo de texto (formateado con símbolo de pesos)
+        txtTotalE.setText("$" + String.format("%,.2f", valor));
+
+        // Mostrar el tipo de evento en el otro campo
+        if (evento instanceof EventoCultural) {
+            txtTipoE.setText("Cultural");
+        } else if (evento instanceof EventoDeportivo) {
+            txtTipoE.setText("Deportivo");
+        } else {
+            txtTipoE.setText("Otro");
+        }
     }//GEN-LAST:event_jButtonCalcularActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
@@ -148,6 +206,7 @@ public class GUICalcularEvento extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUICalcularEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -156,7 +215,13 @@ public class GUICalcularEvento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCalcular;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelIdEvento;
     private javax.swing.JTextField txtIdEvento;
+    private javax.swing.JTextField txtTipoE;
+    private javax.swing.JTextField txtTotalE;
     // End of variables declaration//GEN-END:variables
 }
