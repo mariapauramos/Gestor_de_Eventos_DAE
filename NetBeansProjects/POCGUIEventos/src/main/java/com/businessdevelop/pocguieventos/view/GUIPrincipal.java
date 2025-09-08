@@ -8,8 +8,11 @@ import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.controller.ServicioEvento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
+import com.businessdevelop.pocguieventos.model.InformacionEmpresa;
 import java.awt.Font;
+import java.awt.Image;
 import java.time.LocalDate;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -29,7 +32,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         initComponents();
         setTitle("Sistema Gestion de Eventos");
         setLocationRelativeTo(null); 
-
+        
         // Opcional: Crear eventos de prueba
         servicioEvento.createEvento(new EventoDeportivo("E001","Futbol","Bogota",50,LocalDate.parse("2026-11-28"),100000, "Futbol", "Liga Colombia"));
         servicioEvento.createEvento(new EventoCultural("C001","Concierto","Ibague",30,LocalDate.parse("2025-10-10"), 80000, "Musical", "Andres Cepeda"));
@@ -246,14 +249,18 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
+            InformacionEmpresa empresa= InformacionEmpresa.getInstance();
+        
             JTextArea texto = new JTextArea(
-            "Desarrollado por:\n\n"
+            "    DESARROLLADO POR   \n\n"
           + " - Gileny Silva Leal, 2220221010\n"
           + " - Jonathan David Moya Patarroyo, 2220222039\n"
           + " - Mauricio Arturo Cañas Medina, 2220211010\n"
           + " - Maria Paula Ramos Carrillo, 2220211032\n"
-        );
+          + " \n" + empresa.obtenerInformacionCompleta()
+     ); 
 
         // Configurar estilo
         texto.setFont(new Font("Verdana", Font.PLAIN, 13));
