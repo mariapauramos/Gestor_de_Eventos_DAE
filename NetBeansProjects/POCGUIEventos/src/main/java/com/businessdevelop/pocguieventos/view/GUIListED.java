@@ -40,7 +40,7 @@ public class GUIListED extends javax.swing.JFrame {
         jButtonListar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTableEventos.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         jTableEventos.setModel(new javax.swing.table.DefaultTableModel(

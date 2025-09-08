@@ -41,7 +41,7 @@ public class GUIListEC extends javax.swing.JFrame {
         jTableEventos = new javax.swing.JTable();
         jButtonListar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButtonSalir.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButtonSalir.setForeground(new java.awt.Color(0, 0, 255));

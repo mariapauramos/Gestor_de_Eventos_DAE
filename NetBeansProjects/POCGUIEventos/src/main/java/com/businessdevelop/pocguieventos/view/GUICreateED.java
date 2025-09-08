@@ -62,6 +62,7 @@ public class GUICreateED extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         txtAsistentes.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
