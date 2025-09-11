@@ -17,6 +17,7 @@ public interface IServicioEvento {
     
     public void createEvento (Evento event);
     public Evento searchEvento (String idEvento);
+    public Evento updateEvento(Evento evento);
     public List<Evento> listEventos();
     public List<EventoDeportivo> listEventosDeportivos();
     public List<EventoCultural> listEventosCulturales();

@@ -23,6 +23,7 @@ public class EventoDeportivo extends Evento{
         this.campeonato = campeonato;
         this.estadio= null; //Solo usamos la asociacioón, no la pedimos en GUI
     }
+    
 
     public String getTipoDeporte() {
         return tipoDeporte;
@@ -45,6 +46,15 @@ public class EventoDeportivo extends Evento{
     }
 
     public void setEstadio(Estadio estadio) {
+        this.estadio = estadio;
+    }
+    
+    public EventoDeportivo(String idEvento, String nombre, String ciudad, int asistentes, 
+                           LocalDate fecha, double valorEntrada, String tipoDeporte, 
+                           String campeonato, Estadio estadio) {
+        super(idEvento, nombre, ciudad, asistentes, fecha, valorEntrada);
+        this.tipoDeporte = tipoDeporte;
+        this.campeonato = campeonato;
         this.estadio = estadio;
     }
     

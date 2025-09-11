@@ -4,10 +4,14 @@
  */
 package com.businessdevelop.pocguieventos.view;
 
+import com.businessdevelop.pocguieventos.controller.IServicioEstadio;
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
+import com.businessdevelop.pocguieventos.model.Estadio;
 import com.businessdevelop.pocguieventos.model.Evento;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 //Soloparacomit
 /**
@@ -17,19 +21,29 @@ import javax.swing.JOptionPane;
 public class GUICreateED extends javax.swing.JFrame {
     
     private IServicioEvento servicioEvento;
+    private IServicioEstadio servicioEstadio;
+
 
     /**
      * Creates new form GUICreateED
      */
-    public GUICreateED(IServicioEvento servicioEvento) {
+    public GUICreateED(IServicioEvento servicioEvento, IServicioEstadio servicioEstadio) {
         this.servicioEvento = servicioEvento;
+         this.servicioEstadio = servicioEstadio;
         initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear Evento Deportivo");
         setLocationRelativeTo(null);
-        pack();
+        cargarEstadios();
 
     }
+    
+    private void cargarEstadios() {
+        jComboBoxEstadios.removeAllItems();
+        for (Estadio estadio : servicioEstadio.listEstadio()) {
+            jComboBoxEstadios.addItem(estadio);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +55,6 @@ public class GUICreateED extends javax.swing.JFrame {
     private void initComponents() {
 
         txtAsistentes = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtValorEvento = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -60,6 +73,9 @@ public class GUICreateED extends javax.swing.JFrame {
         txtCampeonato = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabelEstadio = new javax.swing.JLabel();
+        jComboBoxEstadios = new javax.swing.JComboBox<>();
+        jDateChooserFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -68,13 +84,6 @@ public class GUICreateED extends javax.swing.JFrame {
         txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAsistentesActionPerformed(evt);
-            }
-        });
-
-        txtFecha.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
             }
         });
 
@@ -157,6 +166,18 @@ public class GUICreateED extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deportivo.png"))); // NOI18N
 
+        jLabelEstadio.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jLabelEstadio.setText("Estadio:");
+
+        jComboBoxEstadios.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jComboBoxEstadios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEstadiosActionPerformed(evt);
+            }
+        });
+
+        jDateChooserFecha.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,6 +185,15 @@ public class GUICreateED extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCerrar)
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel7)
+                        .addGap(72, 72, 72))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCampeonato)
@@ -175,27 +205,23 @@ public class GUICreateED extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabelTipoD))
+                            .addComponent(jLabelTipoD)
+                            .addComponent(jLabelEstadio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxEstadios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNombre)
-                            .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAsistentes)
-                            .addComponent(txtFecha)
-                            .addComponent(txtValorEvento)
-                            .addComponent(txtTipoD)
-                            .addComponent(txtCampeonato, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrar)
-                        .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel7)
-                        .addGap(72, 72, 72))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCampeonato, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtTipoD))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,12 +229,11 @@ public class GUICreateED extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, Short.MAX_VALUE))
+                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,9 +250,9 @@ public class GUICreateED extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -241,10 +266,14 @@ public class GUICreateED extends javax.swing.JFrame {
                     .addComponent(txtCampeonato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCampeonato))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEstadio)
+                    .addComponent(jComboBoxEstadios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonCerrar))
-                .addGap(20, 20, 20))
+                .addGap(11, 11, 11))
         );
 
         pack();
@@ -253,10 +282,6 @@ public class GUICreateED extends javax.swing.JFrame {
     private void txtAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsistentesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAsistentesActionPerformed
-
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
         // TODO add your handling code here:
@@ -278,13 +303,23 @@ public class GUICreateED extends javax.swing.JFrame {
             nombre= txtNombre.getText();
             lugar = txtLugar.getText();
             asistentes = Integer.parseInt(txtAsistentes.getText());
-            fecha =LocalDate.parse(txtFecha.getText());
+            Date date = jDateChooserFecha.getDate(); 
+            if (date == null) {
+                throw new IllegalArgumentException("Debe seleccionar una fecha.");
+            }
+            fecha = date.toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
             valorEntrada = Double.parseDouble(txtValorEvento.getText());
             tipoDeporte =txtTipoD.getText();
             campeonato = txtCampeonato.getText();
             
             EventoDeportivo event = new EventoDeportivo(
                 idEvento, nombre, lugar, asistentes, fecha, valorEntrada,  tipoDeporte, campeonato);
+            
+            
+            Estadio estadioSeleccionado = (Estadio) jComboBoxEstadios.getSelectedItem();
+            event.setEstadio(estadioSeleccionado);
             
             servicioEvento.createEvento(event);
             JOptionPane.showMessageDialog(this, "Evento deportivo creado correctamente.");
@@ -293,10 +328,13 @@ public class GUICreateED extends javax.swing.JFrame {
             txtNombre.setText("");
             txtLugar.setText("");
             txtAsistentes.setText("");
-            txtFecha.setText("");
+            jDateChooserFecha.setDate(null);
             txtValorEvento.setText("");
             txtTipoD.setText("");
             txtCampeonato.setText("");
+            if (jComboBoxEstadios.getItemCount() > 0) {
+                jComboBoxEstadios.setSelectedIndex(0);
+            }
         }catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
         }
@@ -317,6 +355,10 @@ public class GUICreateED extends javax.swing.JFrame {
     private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLugarActionPerformed
+
+    private void jComboBoxEstadiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadiosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEstadiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,6 +393,8 @@ public class GUICreateED extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JComboBox<Estadio> jComboBoxEstadios;
+    private com.toedter.calendar.JDateChooser jDateChooserFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -360,10 +404,10 @@ public class GUICreateED extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelCampeonato;
+    private javax.swing.JLabel jLabelEstadio;
     private javax.swing.JLabel jLabelTipoD;
     private javax.swing.JTextField txtAsistentes;
     private javax.swing.JTextField txtCampeonato;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtIdEvento;
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtNombre;

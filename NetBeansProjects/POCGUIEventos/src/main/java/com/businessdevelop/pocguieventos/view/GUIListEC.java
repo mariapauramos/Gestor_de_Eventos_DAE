@@ -5,6 +5,7 @@
 package com.businessdevelop.pocguieventos.view;
 
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
+import com.businessdevelop.pocguieventos.controller.ServicioEvento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mariaramos
  */
-public class GUIListEC extends javax.swing.JFrame {
+public class GUIListEC extends javax.swing.JFrame implements ICambioList {
 
     /**
      * Creates new form GUIListEC
@@ -25,7 +26,32 @@ public class GUIListEC extends javax.swing.JFrame {
         initComponents();
         setTitle("Listar Eventos Culturales");
         setLocationRelativeTo(null);
+        
+        if (servicioEvento instanceof ServicioEvento) {
+        ((ServicioEvento) servicioEvento).addVentana(this);
+        }
+            updateList();
     }
+    
+    private void updateList() {
+        List<EventoCultural> eventos = servicioEvento.listEventosCulturales();
+        DefaultTableModel model = (DefaultTableModel) jTableEventos.getModel();
+        model.setRowCount(0);
+
+        for(EventoCultural e : eventos){
+            model.addRow(new Object[]{
+                e.getIdEvento(),
+                e.getNombre(),
+                e.getCiudad(),
+                e.getAsistentes(),
+                e.getFecha(),
+                e.getValorEntrada(),
+                e.getTipoCultura(),
+                e.getArtistaPrincipal()
+            });
+        } 
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +68,11 @@ public class GUIListEC extends javax.swing.JFrame {
         jButtonListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jButtonSalir.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         jButtonSalir.setForeground(new java.awt.Color(0, 0, 255));
@@ -117,23 +148,12 @@ public class GUIListEC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        List<EventoCultural> eventos = servicioEvento.listEventosCulturales();
-        DefaultTableModel model = (DefaultTableModel) jTableEventos.getModel();
-        model.setRowCount(0);
-
-        for(EventoCultural e : eventos){
-            model.addRow(new Object[]{
-                e.getIdEvento(),
-                e.getNombre(),
-                e.getCiudad(),
-                e.getAsistentes(),
-                e.getFecha(),
-                e.getValorEntrada(),
-                e.getTipoCultura(),
-                e.getArtistaPrincipal()
-            });
-        }
+        updateList();
     }//GEN-LAST:event_jButtonListarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        ServicioEvento.getInstance().removeVentana(this);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -171,4 +191,9 @@ public class GUIListEC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEventos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void huboCambioList() {
+        updateList();
+    }
 }

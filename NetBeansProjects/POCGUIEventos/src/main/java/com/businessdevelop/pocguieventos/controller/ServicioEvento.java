@@ -7,6 +7,7 @@ package com.businessdevelop.pocguieventos.controller;
 import com.businessdevelop.pocguieventos.model.Evento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
+import com.businessdevelop.pocguieventos.view.ICambioList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,12 +17,44 @@ import java.util.List;
  * @author mariaramos
  */
 public class ServicioEvento implements IServicioEvento {
+    private static ServicioEvento servicioEvento;
+    private String evento;
     private List<Evento> eventos = new ArrayList<>();
+    private List<ICambioList> ventanasCambio = new ArrayList<>();
+    
+    
+    private ServicioEvento(){
+    }
+
+    public static ServicioEvento getInstance() {
+        if (servicioEvento == null) {
+            servicioEvento = new ServicioEvento();
+        }
+        return servicioEvento;
+    }
+    
+    //Metodos observer
+    public void addVentana(ICambioList gui) {
+        ventanasCambio.add(gui);
+    }
+
+    public void removeVentana(ICambioList gui) {
+        ventanasCambio.remove(gui);
+    }
+    
+    private void huboCambioList() {
+        for (ICambioList gui : ventanasCambio) {
+            System.out.println("Notificando cambio de ventana");
+            gui.huboCambioList();
+        }
+    }
+    
     
     //Método insertar/agregar evento
     @Override
     public  void createEvento(Evento event){
         eventos.add(event);
+        huboCambioList();
     }
     
     //Método buscar evento
@@ -39,6 +72,24 @@ public class ServicioEvento implements IServicioEvento {
         }
         return null;
     }
+    
+    
+    @Override
+    public Evento updateEvento(Evento evento) {
+        if (evento == null || evento.getIdEvento() == null) {
+            return null;
+        }
+
+        Evento existente = searchEvento(evento.getIdEvento());
+        if (existente != null) {
+            eventos.remove(existente);
+            eventos.add(evento);
+            huboCambioList();
+            return evento;
+        }
+        return null;
+    }
+
     
     
     //Método listar eventos
@@ -80,6 +131,7 @@ public class ServicioEvento implements IServicioEvento {
         Evento e = searchEvento(idEvento);
         if (e !=null){
             eventos.remove(e);
+            huboCambioList();
             return true;
         }
        return false;

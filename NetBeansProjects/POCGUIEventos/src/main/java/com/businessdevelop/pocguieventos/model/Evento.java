@@ -6,9 +6,10 @@ package com.businessdevelop.pocguieventos.model;
 
 import java.time.LocalDate;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
-
+@ToString
 /**
  *
  * @author mariaramos
@@ -35,15 +36,5 @@ public  abstract class Evento {
     public abstract double calcularValor();
         //return valorEntrada * 1.19;
 
-    
-    @Override
-    public String toString() {
-        return "Evento: " + "idEvento: " + idEvento + 
-                " - " + "nombre: " + nombre +  
-                " - " + "ciudad: " + ciudad + 
-                " - " + "asistentes: " + asistentes + 
-                " - " + "fecha: " + fecha + 
-                " - " + "valor entrada: " + valorEntrada;
-    }
 }
 

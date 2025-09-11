@@ -4,9 +4,9 @@
  */
 package com.businessdevelop.pocguieventos.view;
 
-import com.businessdevelop.pocguieventos.controller.IServicioEvento;
-import com.businessdevelop.pocguieventos.controller.ServicioEvento;
-import com.businessdevelop.pocguieventos.model.EventoDeportivo;
+import com.businessdevelop.pocguieventos.controller.IServicioEstadio;
+import com.businessdevelop.pocguieventos.controller.ServicioEstadio;
+import com.businessdevelop.pocguieventos.model.Estadio;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,40 +14,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mariaramos
  */
-public class GUIListED extends javax.swing.JFrame implements ICambioList {
-    private IServicioEvento servicioEvento;
+public class GUIListEstadio extends javax.swing.JFrame implements ICambioList {
 
     /**
-     * Creates new form GUIListED
+     * Creates new form GUIListEstadio
      */
-    public GUIListED(IServicioEvento servicioEvento) {
-        this.servicioEvento = servicioEvento;
+    private IServicioEstadio servicioEstadio;
+    
+    public GUIListEstadio(IServicioEstadio servicioEstadio) {
+        this.servicioEstadio = servicioEstadio;
         initComponents();
-        setTitle("Listar Eventos Deportivos");
+        setTitle("Listar Estadios");
         setLocationRelativeTo(null);
         
-        if (servicioEvento instanceof ServicioEvento) {
-        ((ServicioEvento) servicioEvento).addVentana(this);
+        if (servicioEstadio instanceof ServicioEstadio) {
+        ((ServicioEstadio) servicioEstadio).addVentana(this);
         }
             updateList();
-    }
+     }
     
     private void updateList() {
-        List<EventoDeportivo> eventos = servicioEvento.listEventosDeportivos();
-        DefaultTableModel model = (DefaultTableModel) jTableEventos.getModel();
+        List<Estadio> estadios = servicioEstadio.listEstadio();
+        DefaultTableModel model = (DefaultTableModel) jTableEstadios.getModel();
         model.setRowCount(0);
 
-        for(EventoDeportivo e : eventos){
+        for (Estadio e : estadios) {
             model.addRow(new Object[]{
-                e.getIdEvento(),
+                e.getIdEstadio(),
                 e.getNombre(),
-                e.getCiudad(),
-                e.getAsistentes(),
-                e.getFecha(),
-                e.getValorEntrada(),
-                e.getTipoDeporte(),
-                e.getCampeonato(),
-                (e.getEstadio() != null ? e.getEstadio().getNombre() : "Sin asignar")
+                e.getCapacidad(),
+                e.getFechaInauguracion(),
+                e.getPropietario(),
+                e.getNumeroGradas(),
+                e.getNumeroPalcosvip(),
             });
         }
     }
@@ -61,46 +60,15 @@ public class GUIListED extends javax.swing.JFrame implements ICambioList {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableEventos = new javax.swing.JTable();
-        jButtonListar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableEstadios = new javax.swing.JTable();
+        jButtonListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
-            }
-        });
-
-        jTableEventos.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
-        jTableEventos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID Evento", "Nombre", "Ciudad", "Asistentes", "Fecha", "Valor", "Tipo Deporte", "Campeonato", "Estadio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableEventos);
-
-        jButtonListar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jButtonListar.setForeground(new java.awt.Color(0, 0, 255));
-        jButtonListar.setText("Listar");
-        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarActionPerformed(evt);
             }
         });
 
@@ -110,6 +78,37 @@ public class GUIListED extends javax.swing.JFrame implements ICambioList {
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
+            }
+        });
+
+        jTableEstadios.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jTableEstadios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Estadio", "Nombre", "Capacidad", "Fecha Ina", "Propietario", "Número Gradas", "Número Palcos VIP"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableEstadios);
+
+        jButtonListar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonListar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonListar.setText("Listar");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarActionPerformed(evt);
             }
         });
 
@@ -136,22 +135,22 @@ public class GUIListED extends javax.swing.JFrame implements ICambioList {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonListar)
                     .addComponent(jButtonSalir))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        updateList();
-    }//GEN-LAST:event_jButtonListarActionPerformed
-
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
+        updateList();
+    }//GEN-LAST:event_jButtonListarActionPerformed
+
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        ServicioEvento.getInstance().removeVentana(this);
+        ServicioEstadio.getInstance().removeVentana(this);
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -171,22 +170,24 @@ public class GUIListED extends javax.swing.JFrame implements ICambioList {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIListED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIListEstadio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIListED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIListEstadio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIListED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIListEstadio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIListED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIListEstadio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
+        /* Create and display the form */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableEventos;
+    private javax.swing.JTable jTableEstadios;
     // End of variables declaration//GEN-END:variables
 
     @Override

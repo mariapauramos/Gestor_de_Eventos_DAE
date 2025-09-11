@@ -7,6 +7,7 @@ package com.businessdevelop.pocguieventos.view;
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
 import com.businessdevelop.pocguieventos.model.Evento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
+import com.businessdevelop.pocguieventos.model.EventoDeportivo;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
@@ -14,17 +15,28 @@ import javax.swing.JOptionPane;
  *
  * @author mariaramos
  */
-public class GUIDeleteEC extends javax.swing.JFrame {
-    private IServicioEvento servicioEvento;
+public class GUIUpdateEC extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUIDeleteEC
+     * Creates new form GUIUpdateEC
      */
-    public GUIDeleteEC(IServicioEvento servicioEvento) {
+    private IServicioEvento servicioEvento;
+    public GUIUpdateEC(IServicioEvento servicioEvento) {
         this.servicioEvento = servicioEvento;
         initComponents();
-        setTitle("Eliminar Evento");
+        habilitarCampos(false);
+        setTitle("Actualizar Evento");
         setLocationRelativeTo(null);
+    }
+    
+    private void habilitarCampos(boolean habilitar) {
+    txtNombre.setEnabled(habilitar);
+    txtLugar.setEnabled(habilitar);
+    txtAsistentes.setEnabled(habilitar);
+    jDateChooserFecha.setEnabled(habilitar);
+    txtValorEvento.setEnabled(habilitar);
+    txtTipoC.setEnabled(habilitar);
+    txtArtistaP.setEnabled(habilitar);
     }
 
     /**
@@ -36,76 +48,30 @@ public class GUIDeleteEC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelTipoC = new javax.swing.JLabel();
-        jLabelIcon = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtArtistaP = new javax.swing.JTextField();
-        txtIdEvento = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabelArtistaP = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtValorEvento = new javax.swing.JTextField();
-        txtAsistentes = new javax.swing.JTextField();
-        txtLugar = new javax.swing.JTextField();
-        jButtonCerrar = new javax.swing.JButton();
-        txtFecha = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
+        txtArtistaP = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
+        txtIdEvento = new javax.swing.JTextField();
         txtTipoC = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabelArtistaP = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButtonEliminar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonGuardar = new javax.swing.JButton();
+        txtValorEvento = new javax.swing.JTextField();
+        jLabelTipoC = new javax.swing.JLabel();
+        txtAsistentes = new javax.swing.JTextField();
+        jLabelIcon = new javax.swing.JLabel();
+        txtLugar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonEditar = new javax.swing.JButton();
+        jDateChooserFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabelTipoC.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelTipoC.setText("Tipo Cultura:");
-
-        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cultural.png"))); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel1.setText("ID Evento:");
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel4.setText("Asistentes:");
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel3.setText("Ciudad:");
-
-        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdEventoActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel5.setText("Fecha:");
-
-        jLabelArtistaP.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabelArtistaP.setText("Artista Principal:");
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel2.setText("Nombre:");
-
-        txtValorEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorEventoActionPerformed(evt);
-            }
-        });
-
-        txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAsistentesActionPerformed(evt);
-            }
-        });
-
-        txtLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarActionPerformed(evt);
-            }
-        });
 
         jButtonCerrar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButtonCerrar.setForeground(new java.awt.Color(0, 0, 255));
@@ -116,11 +82,11 @@ public class GUIDeleteEC extends javax.swing.JFrame {
             }
         });
 
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel4.setText("Asistentes:");
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel3.setText("Ciudad:");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,20 +103,72 @@ public class GUIDeleteEC extends javax.swing.JFrame {
             }
         });
 
+        txtIdEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdEventoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel5.setText("Fecha:");
+
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel6.setText("Valor Entrada:");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
-        jLabel7.setText("Eliminar Evento Cultural");
+        jLabelArtistaP.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelArtistaP.setText("Artista Principal:");
 
-        jButtonEliminar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        jButtonEliminar.setForeground(new java.awt.Color(0, 0, 255));
-        jButtonEliminar.setText("Eliminar");
-        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel7.setFont(new java.awt.Font("Verdana", 3, 16)); // NOI18N
+        jLabel7.setText("Actualizar Evento Cultural");
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel2.setText("Nombre:");
+
+        jButtonGuardar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonGuardar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarActionPerformed(evt);
+                jButtonGuardarActionPerformed(evt);
             }
         });
+
+        txtValorEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorEventoActionPerformed(evt);
+            }
+        });
+
+        jLabelTipoC.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelTipoC.setText("Tipo Cultura:");
+
+        txtAsistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAsistentesActionPerformed(evt);
+            }
+        });
+
+        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cultural.png"))); // NOI18N
+
+        txtLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLugarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel1.setText("ID Evento:");
+
+        jButtonEditar.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        jButtonEditar.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jDateChooserFecha.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,39 +194,44 @@ public class GUIDeleteEC extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombre)
-                                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTipoC)
                                     .addComponent(txtArtistaP)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtValorEvento, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtAsistentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jDateChooserFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtAsistentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(txtValorEvento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                                .addComponent(txtTipoC, javax.swing.GroupLayout.Alignment.LEADING)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(0, 346, Short.MAX_VALUE))
+                                .addGap(0, 336, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(46, 46, 46)
                                 .addComponent(txtIdEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(164, 164, 164)
-                                .addComponent(jButtonEliminar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabelIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEditar)
+                        .addGap(56, 56, 56)
+                        .addComponent(jButtonGuardar)
+                        .addGap(78, 78, 78)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,21 +245,22 @@ public class GUIDeleteEC extends javax.swing.JFrame {
                     .addComponent(jButtonBuscar)
                     .addComponent(jButtonCerrar))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addComponent(jDateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -250,36 +274,18 @@ public class GUIDeleteEC extends javax.swing.JFrame {
                     .addComponent(jLabelArtistaP)
                     .addComponent(txtArtistaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEliminar)
-                .addGap(4, 4, 4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonGuardar)
+                    .addComponent(jButtonEditar))
+                .addGap(3, 3, 3))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdEventoActionPerformed
-
-    private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorEventoActionPerformed
-
-    private void txtAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsistentesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAsistentesActionPerformed
-
-    private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarActionPerformed
-
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
-
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -306,7 +312,9 @@ public class GUIDeleteEC extends javax.swing.JFrame {
 
             // Formatear fecha
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            txtFecha.setText(ec.getFecha().format(formato));
+            java.util.Date date = java.util.Date.from(
+            ec.getFecha().atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
+            jDateChooserFecha.setDate(date);
 
             // Campos específicos de cultural
             txtTipoC.setText(ec.getTipoCultura());
@@ -317,50 +325,94 @@ public class GUIDeleteEC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+    private void txtIdEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdEventoActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         String idEvento = txtIdEvento.getText().trim();
 
         if (idEvento.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Primero busque un evento para eliminar.");
+            JOptionPane.showMessageDialog(this, "Primero busque un evento.");
             return;
         }
 
-        Evento event = servicioEvento.searchEvento(idEvento);
+        Evento evento = servicioEvento.searchEvento(idEvento);
 
-        if (event != null && event instanceof EventoCultural) {
-            // Confirmación antes de eliminar
-            int opcion = JOptionPane.showConfirmDialog(
-                    this,
-                    "¿Está seguro de que desea eliminar el evento con ID " + idEvento + "?",
-                    "Confirmar eliminación",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-            );
+        if (evento != null && evento instanceof EventoCultural) {
+            try {
+                // Convertimos y recogemos los valores de los campos
+                String nombre = txtNombre.getText().trim();
+                String ciudad = txtLugar.getText().trim();
+                int asistentes = Integer.parseInt(txtAsistentes.getText().trim());
+                double valorEntrada = Double.parseDouble(txtValorEvento.getText().trim());
 
-            if (opcion == JOptionPane.YES_OPTION) {
-                boolean eliminado = servicioEvento.deleteEvento(idEvento);
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                java.util.Date date = jDateChooserFecha.getDate();
+                if (date == null) {
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha.");
+                    return;
+                }
+                java.time.LocalDate fecha = date.toInstant()
+                                            .atZone(java.time.ZoneId.systemDefault())
+                                            .toLocalDate();
 
-                if (eliminado) {
-                    JOptionPane.showMessageDialog(this, "Evento eliminado correctamente.");
+                String tipoCultura = txtTipoC.getText().trim();
+                String artistaPrincipal = txtArtistaP.getText().trim();
 
+                // Creamos un nuevo objeto EventoDeportivo con los valores actualizados
+                EventoCultural actualizado = new EventoCultural(
+                        idEvento,
+                        nombre,
+                        ciudad,
+                        asistentes,
+                        fecha,
+                        valorEntrada,
+                        tipoCultura,
+                        artistaPrincipal
+                );
+
+                // Llamamos al servicio para actualizar
+                Evento resultado = servicioEvento.updateEvento(actualizado);
+
+                if (resultado != null) {
+                    JOptionPane.showMessageDialog(this, "Evento actualizado correctamente.");
+                    habilitarCampos(false);
                     // Limpiar los campos después de eliminar
                     txtIdEvento.setText("");
                     txtNombre.setText("");
                     txtLugar.setText("");
                     txtAsistentes.setText("");
                     txtValorEvento.setText("");
-                    txtFecha.setText("");
+                    jDateChooserFecha.setDate(null);
                     txtTipoC.setText("");
                     txtArtistaP.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el evento.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "No se pudo actualizar el evento.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error en los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-
         } else {
-            JOptionPane.showMessageDialog(this, "Debe buscar un evento válido antes de eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Evento cultural no existe.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonEliminarActionPerformed
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void txtValorEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEventoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorEventoActionPerformed
+
+    private void txtAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsistentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAsistentesActionPerformed
+
+    private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLugarActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        habilitarCampos(true);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,13 +431,13 @@ public class GUIDeleteEC extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIDeleteEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUpdateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIDeleteEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUpdateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIDeleteEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUpdateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIDeleteEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUpdateEC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -395,7 +447,9 @@ public class GUIDeleteEC extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCerrar;
-    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonGuardar;
+    private com.toedter.calendar.JDateChooser jDateChooserFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -408,7 +462,6 @@ public class GUIDeleteEC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipoC;
     private javax.swing.JTextField txtArtistaP;
     private javax.swing.JTextField txtAsistentes;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtIdEvento;
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtNombre;

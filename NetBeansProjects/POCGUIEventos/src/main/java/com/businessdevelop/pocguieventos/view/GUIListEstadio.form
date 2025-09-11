@@ -29,7 +29,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="709" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="698" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButtonListar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -50,7 +50,7 @@
                   <Component id="jButtonListar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,30 +77,24 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTableEventos">
+        <Component class="javax.swing.JTable" name="jTableEstadios">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="13" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="4">
-                <Column editable="true" title="ID Evento" type="java.lang.String"/>
+              <Table columnCount="7" rowCount="4">
+                <Column editable="true" title="ID Estadio" type="java.lang.String"/>
                 <Column editable="true" title="Nombre" type="java.lang.String"/>
-                <Column editable="true" title="Ciudad" type="java.lang.String"/>
-                <Column editable="true" title="Asistentes" type="java.lang.Integer"/>
-                <Column editable="true" title="Fecha" type="java.lang.Object"/>
-                <Column editable="true" title="Valor" type="java.lang.Double"/>
-                <Column editable="true" title="Tipo Cultura" type="java.lang.String"/>
-                <Column editable="true" title="Artista Principal" type="java.lang.String"/>
+                <Column editable="true" title="Capacidad" type="java.lang.Integer"/>
+                <Column editable="true" title="Fecha Ina" type="java.lang.Object"/>
+                <Column editable="true" title="Propietario" type="java.lang.String"/>
+                <Column editable="true" title="N&#xfa;mero Gradas" type="java.lang.Integer"/>
+                <Column editable="true" title="N&#xfa;mero Palcos VIP" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

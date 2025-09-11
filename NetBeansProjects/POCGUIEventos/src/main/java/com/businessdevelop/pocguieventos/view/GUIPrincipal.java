@@ -4,11 +4,14 @@
  */
 package com.businessdevelop.pocguieventos.view;
 
+import com.businessdevelop.pocguieventos.controller.IServicioEstadio;
 import com.businessdevelop.pocguieventos.controller.IServicioEvento;
+import com.businessdevelop.pocguieventos.controller.ServicioEstadio;
 import com.businessdevelop.pocguieventos.controller.ServicioEvento;
 import com.businessdevelop.pocguieventos.model.EventoCultural;
 import com.businessdevelop.pocguieventos.model.EventoDeportivo;
 import com.businessdevelop.pocguieventos.model.InformacionEmpresa;
+import com.businessdevelop.pocguieventos.model.Estadio;
 import java.awt.Font;
 import java.awt.Image;
 import java.time.LocalDate;
@@ -22,7 +25,8 @@ import javax.swing.JTextArea;
  */
 public class GUIPrincipal extends javax.swing.JFrame {
     
-    private IServicioEvento servicioEvento = new ServicioEvento();
+    private ServicioEvento servicioEvento;
+    private ServicioEstadio servicioEstadio;
 
 
     /**
@@ -32,10 +36,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
         initComponents();
         setTitle("Sistema Gestion de Eventos");
         setLocationRelativeTo(null); 
-        
-        // Opcional: Crear eventos de prueba
-        servicioEvento.createEvento(new EventoDeportivo("E001","Futbol","Bogota",50,LocalDate.parse("2026-11-28"),100000, "Futbol", "Liga Colombia"));
-        servicioEvento.createEvento(new EventoCultural("C001","Concierto","Ibague",30,LocalDate.parse("2025-10-10"), 80000, "Musical", "Andres Cepeda"));
+        this.servicioEvento = ServicioEvento.getInstance();
+        this.servicioEstadio = ServicioEstadio.getInstance();
     }
 
     /**
@@ -68,10 +70,18 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuBuscarEvento = new javax.swing.JMenu();
         jMenuItemSearchED = new javax.swing.JMenuItem();
         jMenuItemSearchEC = new javax.swing.JMenuItem();
+        jMenuActualizar = new javax.swing.JMenu();
+        jMenuItemUpdateED = new javax.swing.JMenuItem();
+        jMenuItemUpdateEC = new javax.swing.JMenuItem();
         jMenuDelete = new javax.swing.JMenu();
         jMenuItemDeleteED = new javax.swing.JMenuItem();
         jMenuItemDeleteEC = new javax.swing.JMenuItem();
-        jMenuItemCalcularE = new javax.swing.JMenuItem();
+        jMenuCalcularE = new javax.swing.JMenuItem();
+        jMenuEstadio = new javax.swing.JMenu();
+        jMenuCreateEstadio = new javax.swing.JMenuItem();
+        jMenuUpdateEstadio = new javax.swing.JMenuItem();
+        jMenuDeleteEstadio = new javax.swing.JMenuItem();
+        jMenuListEstadio = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMenuItemAcercaDe = new javax.swing.JMenuItem();
 
@@ -179,6 +189,29 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuEvento.add(jMenuBuscarEvento);
 
+        jMenuActualizar.setText("Actualizar");
+        jMenuActualizar.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jMenuItemUpdateED.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemUpdateED.setText("Evento Deportivo");
+        jMenuItemUpdateED.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUpdateEDActionPerformed(evt);
+            }
+        });
+        jMenuActualizar.add(jMenuItemUpdateED);
+
+        jMenuItemUpdateEC.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuItemUpdateEC.setText("Evento Cultural");
+        jMenuItemUpdateEC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUpdateECActionPerformed(evt);
+            }
+        });
+        jMenuActualizar.add(jMenuItemUpdateEC);
+
+        jMenuEvento.add(jMenuActualizar);
+
         jMenuDelete.setText("Eliminar");
         jMenuDelete.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
 
@@ -202,16 +235,57 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuEvento.add(jMenuDelete);
 
-        jMenuItemCalcularE.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
-        jMenuItemCalcularE.setText("Calcular ");
-        jMenuItemCalcularE.addActionListener(new java.awt.event.ActionListener() {
+        jMenuCalcularE.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
+        jMenuCalcularE.setText("Calcular ");
+        jMenuCalcularE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCalcularEActionPerformed(evt);
+                jMenuCalcularEActionPerformed(evt);
             }
         });
-        jMenuEvento.add(jMenuItemCalcularE);
+        jMenuEvento.add(jMenuCalcularE);
 
         jMenuBar1.add(jMenuEvento);
+
+        jMenuEstadio.setText("Estadio");
+        jMenuEstadio.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+
+        jMenuCreateEstadio.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuCreateEstadio.setText("Crear");
+        jMenuCreateEstadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCreateEstadioActionPerformed(evt);
+            }
+        });
+        jMenuEstadio.add(jMenuCreateEstadio);
+
+        jMenuUpdateEstadio.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuUpdateEstadio.setText("Actualizar");
+        jMenuUpdateEstadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuUpdateEstadioActionPerformed(evt);
+            }
+        });
+        jMenuEstadio.add(jMenuUpdateEstadio);
+
+        jMenuDeleteEstadio.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuDeleteEstadio.setText("Eliminar");
+        jMenuDeleteEstadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDeleteEstadioActionPerformed(evt);
+            }
+        });
+        jMenuEstadio.add(jMenuDeleteEstadio);
+
+        jMenuListEstadio.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jMenuListEstadio.setText("Listar");
+        jMenuListEstadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuListEstadioActionPerformed(evt);
+            }
+        });
+        jMenuEstadio.add(jMenuListEstadio);
+
+        jMenuBar1.add(jMenuEstadio);
 
         jMenuAyuda.setText("Ayuda");
         jMenuAyuda.setFont(new java.awt.Font("Verdana", 2, 13)); // NOI18N
@@ -276,10 +350,10 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     
-    private void jMenuItemCalcularEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularEActionPerformed
+    private void jMenuCalcularEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCalcularEActionPerformed
         GUICalcularEvento gui = new GUICalcularEvento(servicioEvento);
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemCalcularEActionPerformed
+    }//GEN-LAST:event_jMenuCalcularEActionPerformed
 
     private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
         this.dispose();
@@ -291,7 +365,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemExitActionPerformed
 
     private void jMenuCreateEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreateEDActionPerformed
-        GUICreateED gui = new GUICreateED(servicioEvento);
+        GUICreateED gui = new GUICreateED(servicioEvento, servicioEstadio);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuCreateEDActionPerformed
 
@@ -329,6 +403,37 @@ public class GUIPrincipal extends javax.swing.JFrame {
         GUIDeleteEC gui = new GUIDeleteEC(servicioEvento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemDeleteECActionPerformed
+
+    private void jMenuCreateEstadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreateEstadioActionPerformed
+        GUICreateEstadio gui = new GUICreateEstadio(servicioEstadio);
+        gui.setVisible(true); 
+    }//GEN-LAST:event_jMenuCreateEstadioActionPerformed
+
+    private void jMenuUpdateEstadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUpdateEstadioActionPerformed
+        GUIUpdateEstadio gui = new GUIUpdateEstadio(servicioEstadio);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuUpdateEstadioActionPerformed
+
+    private void jMenuDeleteEstadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDeleteEstadioActionPerformed
+        GUIDeleteEstadio gui = new GUIDeleteEstadio(servicioEstadio);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuDeleteEstadioActionPerformed
+
+    private void jMenuListEstadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListEstadioActionPerformed
+        GUIListEstadio gui = new GUIListEstadio(servicioEstadio);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuListEstadioActionPerformed
+
+    private void jMenuItemUpdateEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateEDActionPerformed
+        System.out.println(">>> Abriendo ventana de Actualizar Evento Deportivo...");
+        GUIUpdateED gui = new GUIUpdateED(servicioEvento, servicioEstadio);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemUpdateEDActionPerformed
+
+    private void jMenuItemUpdateECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateECActionPerformed
+        GUIUpdateEC gui = new GUIUpdateEC(servicioEvento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemUpdateECActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,26 +477,34 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuActualizar;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenu jMenuBuscarEvento;
+    private javax.swing.JMenuItem jMenuCalcularE;
     private javax.swing.JMenu jMenuCreate;
     private javax.swing.JMenuItem jMenuCreateEC;
     private javax.swing.JMenuItem jMenuCreateED;
+    private javax.swing.JMenuItem jMenuCreateEstadio;
     private javax.swing.JMenu jMenuDelete;
+    private javax.swing.JMenuItem jMenuDeleteEstadio;
+    private javax.swing.JMenu jMenuEstadio;
     private javax.swing.JMenu jMenuEvento;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAcercaDe;
-    private javax.swing.JMenuItem jMenuItemCalcularE;
     private javax.swing.JMenuItem jMenuItemDeleteEC;
     private javax.swing.JMenuItem jMenuItemDeleteED;
     private javax.swing.JMenuItem jMenuItemExit;
     private javax.swing.JMenuItem jMenuItemSearchEC;
     private javax.swing.JMenuItem jMenuItemSearchED;
+    private javax.swing.JMenuItem jMenuItemUpdateEC;
+    private javax.swing.JMenuItem jMenuItemUpdateED;
     private javax.swing.JMenuItem jMenuListEC;
     private javax.swing.JMenuItem jMenuListED;
+    private javax.swing.JMenuItem jMenuListEstadio;
+    private javax.swing.JMenuItem jMenuUpdateEstadio;
     // End of variables declaration//GEN-END:variables
 }
