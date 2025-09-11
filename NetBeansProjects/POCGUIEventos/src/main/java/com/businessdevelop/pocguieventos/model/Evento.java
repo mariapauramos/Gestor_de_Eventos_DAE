@@ -5,8 +5,6 @@
 package com.businessdevelop.pocguieventos.model;
 
 import java.time.LocalDate;
-import lombok.Data;
-import lombok.ToString;
 
 
 /**
@@ -21,6 +19,15 @@ public  abstract class Evento {
    private int asistentes;
    private LocalDate fecha;
    private double valorEntrada;
+   
+   public Evento(String idEvento, String nombre, String ciudad, int asistentes, LocalDate fechaHora , double valorEntrada) {
+        this.idEvento = idEvento;
+        this.nombre = nombre;
+        this.ciudad=ciudad;
+        this.asistentes = asistentes;
+        this.fecha= fechaHora;
+        this.valorEntrada = valorEntrada;
+    }
 
     public String getIdEvento() {
         return idEvento;
@@ -70,21 +77,11 @@ public  abstract class Evento {
         this.valorEntrada = valorEntrada;
     }
     
-    public Evento(String idEvento, String nombre, String ciudad, int asistentes, LocalDate fechaHora , double valorEntrada) {
-        this.idEvento = idEvento;
-        this.nombre = nombre;
-        this.ciudad=ciudad;
-        this.asistentes = asistentes;
-        this.fecha= fechaHora;
-        this.valorEntrada = valorEntrada;
-    }
-    
     public abstract double calcularValor();
-        //return valorEntrada * 1.19;
 
     @Override
     public String toString() {
-        return "Evento{" + "idEvento=" + idEvento + ", nombre=" + nombre + ", ciudad=" + ciudad + ", asistentes=" + asistentes + ", fecha=" + fecha + ", valorEntrada=" + valorEntrada + '}';
+        return "Evento{" + "idEvento=" + idEvento + ", nombre=" + nombre + ", ciudad=" + ciudad + ", asistentes=" + asistentes + ", fecha=" + fecha + ", valorEntrada=" + valorEntrada + "}";
     }
 
 }

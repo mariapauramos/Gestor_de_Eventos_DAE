@@ -6,17 +6,12 @@ package com.businessdevelop.pocguieventos.model;
 
 
 import java.time.LocalDate;
-import lombok.Data;
-import lombok.ToString;
 /**
 /**
  *
  * @author mariaramos
  */
-@Data
 public class Estadio {
-    
-    
     private String idEstadio;
     private String nombre;
     private int capacidad;
@@ -35,6 +30,64 @@ public class Estadio {
         this.numeroGradas= numeroGradas;
         this.numeroPalcosvip= numeroPalcosvip;
     }
+
+    public String getIdEstadio() {
+        return idEstadio;
+    }
+
+    public void setIdEstadio(String idEstadio) {
+        this.idEstadio = idEstadio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public LocalDate getFechaInauguracion() {
+        return fechaInauguracion;
+    }
+
+    public void setFechaInauguracion(LocalDate fechaInauguracion) {
+        this.fechaInauguracion = fechaInauguracion;
+    }
+
+    public String getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(String propietario) {
+        this.propietario = propietario;
+    }
+
+    public int getNumeroGradas() {
+        return numeroGradas;
+    }
+
+    public void setNumeroGradas(int numeroGradas) {
+        this.numeroGradas = numeroGradas;
+    }
+
+    public int getNumeroPalcosvip() {
+        return numeroPalcosvip;
+    }
+
+    public void setNumeroPalcosvip(int numeroPalcosvip) {
+        this.numeroPalcosvip = numeroPalcosvip;
+    }
+    
+    
     
     @Override
     public String toString() {
